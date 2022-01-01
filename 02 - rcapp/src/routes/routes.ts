@@ -1,11 +1,8 @@
-// import LazyPage1 from "lazyload/pages/LazyPage";
-// import LazyPage2 from "lazyload/pages/LazyPage2";
-// import LazyPage3 from "lazyload/pages/LazyPage3";
 import { lazy, LazyExoticComponent } from "react";
 
-const Lazy1 = lazy(() => import('lazyload/pages/LazyPage'));
-const Lazy2 = lazy(() => import('lazyload/pages/LazyPage2'));
-const Lazy3 = lazy(() => import('lazyload/pages/LazyPage3'));
+const Lazy1 = lazy(() => import(/* webpackChunkName: "LazyPage1" */ 'lazyload/pages/LazyPage'));
+const Lazy2 = lazy(() => import(/* webpackChunkName: "LazyPage2" */ 'lazyload/pages/LazyPage2'));
+const Lazy3 = lazy(() => import(/* webpackChunkName: "LazyPage3" */ 'lazyload/pages/LazyPage3'));
 
 type JSXComponent = () => JSX.Element;
 
