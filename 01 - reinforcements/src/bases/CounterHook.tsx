@@ -12,13 +12,7 @@ interface Props {
   initialValue?: number;
 }
 
-/**
- * Max value that can reach the counter
- * @type {number}
- */
-const maxCounter = 80;
-
-export default function CounterHook({ initialValue = 77 }: Props) {
+export default function CounterHook({ initialValue = 8 }: Props) {
   const { counter, counterNode, increment } = useCounter(initialValue);
 
   return (
