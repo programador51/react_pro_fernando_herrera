@@ -1,4 +1,9 @@
-import React, { ReactElement, useState } from "react";
+import React, {
+  createContext,
+  ReactElement,
+  useContext,
+  useState,
+} from "react";
 import styles, { productCard } from "../styles/styles.module.css";
 import useProduct from "02-component-patterns/hooks/useProduct";
 
@@ -13,31 +18,46 @@ interface Product {
   img?: string;
 }
 
-interface ProductButtonsProps {
-  increase: () => void;
-  decrease: () => void;
+interface ProductContextProps {
   counter: number;
+  decrease: () => void;
+  increase: () => void;
+  product: Product;
 }
 
+const ProductContext = createContext({} as ProductContextProps);
+const { Provider } = ProductContext;
+
 export const ProductImage = ({ img = "" }) => {
-  const imageProduct =
-    img !== "" ? img : `${process.env.PUBLIC_URL}/images/no-image.jpg`;
+  const { product } = useContext(ProductContext);
+
+  let imgToDisplay: string;
+
+  if (img !== "") {
+    imgToDisplay = img;
+  } else if (product.img) {
+    imgToDisplay = product.img;
+  } else {
+    imgToDisplay = `${process.env.PUBLIC_URL}/images/no-image.jpg`;
+  }
 
   return (
-    <img className={styles.productImg} src={imageProduct} alt="product image" />
+    <img className={styles.productImg} src={imgToDisplay} alt="product image" />
   );
 };
 
-export const ProductTitle = ({ title }: { title: string }) => {
-  return <span className={styles.productDescription}>{title}</span>;
+export const ProductTitle = ({ title }: { title?: string }) => {
+  const { product } = useContext(ProductContext);
+
+  return (
+    <span className={styles.productDescription}>
+      {title ? title : product.title}
+    </span>
+  );
 };
 
-export const ProductButtons = ({
-  counter,
-  increase,
-  decrease,
-}: ProductButtonsProps) => {
-  // const { counter, decrease, increase } = useProduct();
+export const ProductButtons = () => {
+  const { increase, decrease, counter } = useContext(ProductContext);
 
   return (
     <div className={styles.buttonsContainer}>
@@ -56,18 +76,27 @@ export function ProductCard({ product, children }: Props) {
   const { counter, decrease, increase } = useProduct();
 
   return (
-    <div className={styles.productCard}>
-      {children}
-      {/* <ProductImage img={product.img} />
-
-      <ProductTitle title={product.title} />
-
-      <ProductButtons
-        increase={increase}
-        decrease={decrease}
-        counter={counter}
-      /> */}
-    </div>
+    <Provider
+      value={{
+        counter,
+        decrease,
+        increase,
+        product,
+      }}
+    >
+      <div className={styles.productCard}>
+        {children}
+        {/* <ProductImage img={product.img} />
+  
+        <ProductTitle title={product.title} />
+  
+        <ProductButtons
+          increase={increase}
+          decrease={decrease}
+          counter={counter}
+        /> */}
+      </div>
+    </Provider>
   );
 }
 

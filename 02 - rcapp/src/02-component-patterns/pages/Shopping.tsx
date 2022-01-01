@@ -28,8 +28,8 @@ export default function Shopping() {
       >
         <ProductCard product={product}>
           <ProductCard.Image img={product.img} />
-          <ProductCard.Title title={product.title} />
-          {/* <ProductCard.Buttons/> */}
+          <ProductCard.Title />
+          <ProductCard.Buttons />
         </ProductCard>
       </div>
     </div>
