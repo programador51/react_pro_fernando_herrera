@@ -27,17 +27,9 @@ export default function Shopping() {
         }}
       >
         <ProductCard product={product}>
-          <ProductImage img={product.img} />
-          <ProductTitle title={product.title} />
-          <ProductButtons
-            increase={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            decrease={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            counter={0}
-          />
+          <ProductCard.Image img={product.img} />
+          <ProductCard.Title title={product.title} />
+          {/* <ProductCard.Buttons/> */}
         </ProductCard>
       </div>
     </div>

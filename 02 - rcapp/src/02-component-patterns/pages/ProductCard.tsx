@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import styles from "../styles/styles.module.css";
+import styles, { productCard } from "../styles/styles.module.css";
 import useProduct from "02-component-patterns/hooks/useProduct";
 
 interface Props {
@@ -70,3 +70,7 @@ export function ProductCard({ product, children }: Props) {
     </div>
   );
 }
+
+ProductCard.Title = ProductTitle;
+ProductCard.Image = ProductImage;
+ProductCard.Buttons = ProductButtons;
