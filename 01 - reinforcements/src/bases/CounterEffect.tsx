@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { gsap } from "gsap";
 
 interface Props {
   /**
@@ -27,14 +28,17 @@ export default function Counter({ initialValue = 77 }: Props) {
     function () {
       if (counter < 80) return;
 
-      console.log("Max value reached");
+      // console.log("Max value reached");
+
+      gsap.to("h2", { y: -10, duration: 1 });
     },
     [counter]
   );
 
   return (
     <>
-      <h1>Counter effect {counter}</h1>
+      <h1>Counter effect:</h1>
+      <h2>{counter}</h2>
 
       <button onClick={increment}>+1</button>
     </>
