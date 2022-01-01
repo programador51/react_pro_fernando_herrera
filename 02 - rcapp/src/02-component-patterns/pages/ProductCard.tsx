@@ -12,34 +12,59 @@ interface Product {
   img?: string;
 }
 
+interface ProductButtonsProps {
+  increase: () => void;
+  decrease: () => void;
+  counter: number;
+}
+
+export const ProductImage = ({ img = "" }) => {
+  const imageProduct =
+    img !== "" ? img : `${process.env.PUBLIC_URL}/images/no-image.jpg`;
+
+  return (
+    <img className={styles.productImg} src={imageProduct} alt="product image" />
+  );
+};
+
+export const ProductTitle = ({ title }: { title: string }) => {
+  return <span className={styles.productDescription}>{title}</span>;
+};
+
+export const ProductButtons = ({
+  counter,
+  increase,
+  decrease,
+}: ProductButtonsProps) => {
+  // const { counter, decrease, increase } = useProduct();
+
+  return (
+    <div className={styles.buttonsContainer}>
+      <button onClick={decrease} className={styles.buttonMinus}>
+        -
+      </button>
+      <div className={styles.countLabel}>{counter}</div>
+      <button onClick={increase} className={styles.buttonAdd}>
+        +
+      </button>
+    </div>
+  );
+};
+
 export default function ProductCard({ product }: Props) {
   const { counter, decrease, increase } = useProduct();
 
-  console.log(product.img);
-
-  const img =
-    product.img !== undefined
-      ? product.img
-      : `${process.env.PUBLIC_URL}/images/no-image.jpg`;
-
   return (
     <div className={styles.productCard}>
-      <img
-        className={styles.productImg}
-        src={img}
-        alt="mug of the product to sell"
-      />
-      <span className={styles.productDescription}>{product.title}</span>
+      <ProductImage img={product.img} />
 
-      <div className={styles.buttonsContainer}>
-        <button onClick={decrease} className={styles.buttonMinus}>
-          -
-        </button>
-        <div className={styles.countLabel}>{counter}</div>
-        <button onClick={increase} className={styles.buttonAdd}>
-          +
-        </button>
-      </div>
+      <ProductTitle title={product.title} />
+
+      <ProductButtons
+        increase={increase}
+        decrease={decrease}
+        counter={counter}
+      />
     </div>
   );
 }

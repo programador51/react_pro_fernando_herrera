@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
-// import { , Router } from "react-router-dom";
 import { Routes, Route, NavLink, BrowserRouter } from "react-router-dom";
 import { routes } from "routes/routes";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Navigation() {
   return (
@@ -16,6 +16,7 @@ export default function Navigation() {
 
             {routes.map((route) => (
               <NavLink
+                key={uuidv4()}
                 to={route.to}
                 className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
@@ -26,7 +27,11 @@ export default function Navigation() {
 
           <Routes>
             {routes.map((route) => (
-              <Route path={route.path} element={<route.Component />} />
+              <Route
+                key={uuidv4()}
+                path={route.path}
+                element={<route.Component />}
+              />
             ))}
             <Route path="/*" element={<h1>404</h1>} />
           </Routes>
