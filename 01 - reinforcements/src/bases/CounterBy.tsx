@@ -8,13 +8,23 @@ interface Props {
   initialValue?: number;
 }
 
+interface CounterState {
+  /**
+   * Current number of the counter
+   */
+  counter: number;
+
+  /**
+   * Number of times that the button of increment was clicked
+   */
+  clickedTimes: number;
+}
+
 export default function Counter({ initialValue = 10 }: Props) {
-  const [counterState, setCounterState] = useState({
+  const [{ counter, clickedTimes }, setCounterState] = useState<CounterState>({
     counter: initialValue,
     clickedTimes: 0,
   });
-
-  const { counter, clickedTimes } = counterState;
 
   /**
    * Increment the value of the counter
@@ -22,8 +32,8 @@ export default function Counter({ initialValue = 10 }: Props) {
    */
   const increment = (incrementBy: number) =>
     setCounterState({
-      counter: counterState.counter + incrementBy,
-      clickedTimes: counterState.clickedTimes + 1,
+      counter: counter + incrementBy,
+      clickedTimes: clickedTimes + 1,
     });
 
   return (
