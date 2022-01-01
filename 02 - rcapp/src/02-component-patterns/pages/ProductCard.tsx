@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import styles from "../styles/styles.module.css";
+import useProduct from "02-component-patterns/hooks/useProduct";
 
 export default function ProductCard() {
-  const [counter, setCounter] = useState(0);
+  // const [counter, setCounter] = useState(0);
 
-  const increase = () => setCounter(counter + 1);
-  const decrease = () => setCounter(counter - 1 <= 0 ? 0 : counter - 1);
+  // const increase = () => setCounter(counter + 1);
+  // const decrease = () => setCounter(counter - 1 <= 0 ? 0 : counter - 1);
+
+  const { counter, decrease, increase } = useProduct();
 
   return (
     <div className={styles.productCard}>
