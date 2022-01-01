@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import styles from "../styles/styles.module.css";
 import useProduct from "02-component-patterns/hooks/useProduct";
 
 interface Props {
   product: Product;
+  children?: ReactElement | ReactElement[];
 }
 
 interface Product {
@@ -51,12 +52,13 @@ export const ProductButtons = ({
   );
 };
 
-export default function ProductCard({ product }: Props) {
+export function ProductCard({ product, children }: Props) {
   const { counter, decrease, increase } = useProduct();
 
   return (
     <div className={styles.productCard}>
-      <ProductImage img={product.img} />
+      {children}
+      {/* <ProductImage img={product.img} />
 
       <ProductTitle title={product.title} />
 
@@ -64,7 +66,7 @@ export default function ProductCard({ product }: Props) {
         increase={increase}
         decrease={decrease}
         counter={counter}
-      />
+      /> */}
     </div>
   );
 }

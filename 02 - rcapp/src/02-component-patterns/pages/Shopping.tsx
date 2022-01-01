@@ -1,8 +1,17 @@
 import React from "react";
-import ProductCard from "02-component-patterns/pages/ProductCard";
+import {
+  ProductButtons,
+  ProductCard,
+  ProductImage,
+  ProductTitle,
+} from "02-component-patterns/pages/ProductCard";
 // import styles from "02-component-patterns/styles/styles.module.css";
 
-const product = {};
+const product = {
+  id: "1",
+  title: `Taza Dev`,
+  img: `${process.env.PUBLIC_URL}/images/coffee-mug.png`,
+};
 
 export default function Shopping() {
   return (
@@ -17,17 +26,19 @@ export default function Shopping() {
           flexWrap: "wrap",
         }}
       >
-        <ProductCard
-          product={{
-            id: "1",
-            title: "123",
-            // img: "12312",
-          }}
-        />
-        {/* <ProductCard /> */}
-        {/* <ProductCard /> */}
-        {/* <ProductCard /> */}
-        {/* <ProductCard /> */}
+        <ProductCard product={product}>
+          <ProductImage img={product.img} />
+          <ProductTitle title={product.title} />
+          <ProductButtons
+            increase={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            decrease={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            counter={0}
+          />
+        </ProductCard>
       </div>
     </div>
   );
