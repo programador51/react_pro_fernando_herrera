@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <h1>React</h1>
-      <Counter initialValue={5} />
+      <Counter />
     </>
   );
 }

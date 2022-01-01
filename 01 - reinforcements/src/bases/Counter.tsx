@@ -1,17 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-/**
- *
- * @param props - Props of components
- * @param props.initialValue - Initial value of the counter
- * @returns
- */
-export default function Counter({
-  initialValue = 0,
-}: {
-  initialValue: number;
-}) {
+interface Props {
+  /**
+   * Initial number for the counter when it renders
+   */
+  initialValue?: number;
+}
+
+export default function Counter({ initialValue = 0 }: Props) {
   const [counter, setCounter] = useState(initialValue);
 
   const increment = () => setCounter(counter + 1);
