@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 
 interface Props {
@@ -19,6 +20,8 @@ const maxCounter = 80;
 export default function Counter({ initialValue = 77 }: Props) {
   const [counter, setCounter] = useState(initialValue);
 
+  const counterNode = useRef<HTMLHeadingElement>(null);
+
   const increment = () => {
     const newCounterValue = counter + 1;
     setCounter(newCounterValue > maxCounter ? counter : newCounterValue);
@@ -28,9 +31,12 @@ export default function Counter({ initialValue = 77 }: Props) {
     function () {
       if (counter < 80) return;
 
-      // console.log("Max value reached");
+      const timeline = gsap.timeline();
 
-      gsap.to("h2", { y: -10, duration: 1 });
+      timeline.to(counterNode.current, { y: -10, duration: 1 });
+      timeline.to(counterNode.current, { y: 0, duration: 1 });
+
+      // gsap.to(counterNode.current, { y: -10, duration: 1 });
     },
     [counter]
   );
@@ -38,7 +44,7 @@ export default function Counter({ initialValue = 77 }: Props) {
   return (
     <>
       <h1>Counter effect:</h1>
-      <h2>{counter}</h2>
+      <h2 ref={counterNode}>{counter}</h2>
 
       <button onClick={increment}>+1</button>
     </>
