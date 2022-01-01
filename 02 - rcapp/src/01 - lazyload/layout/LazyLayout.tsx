@@ -1,6 +1,6 @@
-import LazyPage1 from "lazyload/pages/LazyPage";
-import LazyPage2 from "lazyload/pages/LazyPage2";
-import LazyPage3 from "lazyload/pages/LazyPage3";
+import LazyPage1 from "01 - lazyload/pages/LazyPage";
+import LazyPage2 from "01 - lazyload/pages/LazyPage2";
+import LazyPage3 from "01 - lazyload/pages/LazyPage3";
 import React from "react";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 

@@ -10,7 +10,7 @@ export default function Navigation() {
         <div className="main-layout">
           <nav>
             <img
-              src={`${process.env.REACT_APP_IMGS}/logo.svg`}
+              src={`${process.env.PUBLIC_URL}/images/logo.svg`}
               alt="logo_route"
             />
 

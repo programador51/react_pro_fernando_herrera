@@ -1,8 +1,5 @@
-import { lazy, LazyExoticComponent } from "react";
-
-const Lazy1 = lazy(() => import(/* webpackChunkName: "LazyPage1" */ 'lazyload/layout/LazyLayout'));
-const Lazy2 = lazy(() => import(/* webpackChunkName: "LazyPage2" */ 'lazyload/pages/NoLazy'));
-const Lazy3 = lazy(() => import(/* webpackChunkName: "LazyPage3" */ 'lazyload/pages/LazyPage3'));
+import Shopping from '02-component-patterns/pages/Shopping';
+import { LazyExoticComponent } from 'react';
 
 type JSXComponent = () => JSX.Element;
 
@@ -32,15 +29,15 @@ export const routes: routeNav[] = [
      * Al that cross the path lazy will be pass first by Lazy1
      */
     {
-        to: '/lazy/',
-        path: '/lazy/*',
-        Component: Lazy1,
-        name: 'Dashboard'
+        to: '/shopping/',
+        path: '/shopping/*',
+        Component: Shopping,
+        name: 'Shopping'
     },
-    {
-        to: '/nolazy',
-        path: 'nolazy',
-        Component: Lazy2,
-        name: 'No lazy'
-    }
+    // {
+    //     to: '/nolazy',
+    //     path: 'nolazy',
+    //     Component: Lazy2,
+    //     name: 'No lazy'
+    // }
 ]
