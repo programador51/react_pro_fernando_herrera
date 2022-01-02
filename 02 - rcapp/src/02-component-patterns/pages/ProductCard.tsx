@@ -18,7 +18,10 @@ export function ProductCard({
   className = "",
   onChange = () => {},
 }: Props) {
-  const { counter, decrease, increase } = useProduct(onChange);
+  const { counter, decrease, increase } = useProduct({
+    onChange,
+    product,
+  });
 
   return (
     <Provider

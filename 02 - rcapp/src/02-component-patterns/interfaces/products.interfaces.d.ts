@@ -2,7 +2,7 @@ export interface Props {
     product: Product;
     className?: string;
     children?: ReactElement | ReactElement[];
-    onChange?: () => void;
+    onChange?: (args: onChangeArgs) => void;
 }
 
 export interface Product {
@@ -20,4 +20,9 @@ export interface ProductContextProps {
 
 export interface ShoppingItem extends Product {
     quantity: number
+}
+
+export interface onChangeArgs {
+    product: Product;
+    quantity: number;
 }

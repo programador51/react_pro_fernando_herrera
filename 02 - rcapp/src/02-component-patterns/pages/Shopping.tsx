@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ProductCard } from "02-component-patterns/pages/ProductCard";
 import {
+  onChangeArgs,
   Product,
   ShoppingItem,
 } from "02-component-patterns/interfaces/products.interfaces";
@@ -28,7 +29,8 @@ export default function Shopping() {
     "2": { ...product2, quantity: 4 },
   });
 
-  const onEditItem = () => console.log("hi");
+  const onEditItem = (info: onChangeArgs) =>
+    console.log(info.product, info.quantity);
 
   return (
     <div>
@@ -43,11 +45,7 @@ export default function Shopping() {
         }}
       >
         {products.map((product: Product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onChange={() => onEditItem()}
-          >
+          <ProductCard key={product.id} product={product} onChange={onEditItem}>
             <ProductCard.Image />
             <ProductCard.Title />
             <ProductCard.Buttons />
@@ -59,7 +57,7 @@ export default function Shopping() {
         <ProductCard
           product={product1}
           className="shopping-card-current"
-          onChange={() => onEditItem()}
+          // onChange={() => onEditItem()}
         >
           <ProductCard.Image />
           <ProductCard.Title />
