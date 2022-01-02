@@ -1,5 +1,6 @@
 export interface Props {
     product: Product;
+    className?: string;
     children?: ReactElement | ReactElement[];
 }
 

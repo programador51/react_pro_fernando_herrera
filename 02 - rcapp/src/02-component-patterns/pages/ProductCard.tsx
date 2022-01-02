@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext } from "react";
 import styles from "../styles/styles.module.css";
 import useProduct from "02-component-patterns/hooks/useProduct";
 import {
@@ -12,7 +12,7 @@ import { ProductButtons } from "02-component-patterns/components/ProductButtons"
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-export function ProductCard({ product, children }: Props) {
+export function ProductCard({ product, children, className = "" }: Props) {
   const { counter, decrease, increase } = useProduct();
 
   return (
@@ -24,7 +24,7 @@ export function ProductCard({ product, children }: Props) {
         product,
       }}
     >
-      <div className={styles.productCard}>{children}</div>
+      <div className={`${styles.productCard} ${className}`}>{children}</div>
     </Provider>
   );
 }
