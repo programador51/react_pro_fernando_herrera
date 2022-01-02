@@ -1,3 +1,13 @@
 .bg-dark{
-    background-color: rgb(73, 73, 73);
+    background-color: hsl(0, 0%, 29%);
+}
+
+.text-white{
+    color:hsl(30, 100%, 99%);
+}
+
+.custom-image{
+    padding:10px;
+    border-radius:20px;
+    box-sizing: border-box;
 }
