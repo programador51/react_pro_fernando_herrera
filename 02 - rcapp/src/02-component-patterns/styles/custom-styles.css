@@ -11,3 +11,13 @@
     border-radius:20px;
     box-sizing: border-box;
 }
+
+.shopping-cart{
+    position: fixed;
+    top:0;
+    right: 10px;
+}
+
+.shopping-card-current{
+    width: 100px;
+}

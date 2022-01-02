@@ -1,15 +1,21 @@
 import React from "react";
 import { ProductCard } from "02-component-patterns/pages/ProductCard";
-import { ProductImage } from "02-component-patterns/components/ProductImage";
-import { ProductTitle } from "02-component-patterns/components/ProductTitle";
-import { ProductButtons } from "02-component-patterns/components/ProductButtons";
+import { Product } from "02-component-patterns/interfaces/products.interfaces";
 import "../styles/custom-styles.css";
 
-const product = {
+const product1 = {
   id: "1",
   title: `Taza Dev`,
   img: `${process.env.PUBLIC_URL}/images/coffee-mug.png`,
 };
+
+const product2 = {
+  id: "2",
+  title: `Taza Dev Plus`,
+  img: `${process.env.PUBLIC_URL}/images/coffee-mug.png`,
+};
+
+const products: Product[] = [product1, product2];
 
 export default function Shopping() {
   return (
@@ -24,25 +30,20 @@ export default function Shopping() {
           flexWrap: "wrap",
         }}
       >
-        <ProductCard product={product}>
-          <ProductCard.Image imageProp={product.img} />
-          <ProductCard.Title className="bg-dark" />
-          <ProductCard.Buttons />
-        </ProductCard>
+        {products.map((product: Product) => (
+          <ProductCard key={product.id} product={product}>
+            <ProductCard.Image />
+            <ProductCard.Title />
+            <ProductCard.Buttons />
+          </ProductCard>
+        ))}
+      </div>
 
-        <ProductCard product={product} className="bg-dark">
-          <ProductImage
-            className="custom-image"
-            imageProp="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FWxfmULzzKoU%2Fmaxresdefault.jpg&f=1&nofb=1"
-          />
-          <ProductTitle
-            title="Vacations"
-            className="text-white"
-            style={{
-              color: "red",
-            }}
-          />
-          <ProductButtons />
+      <div className="shopping-cart">
+        <ProductCard product={product1} className="shopping-card-current">
+          <ProductCard.Image />
+          <ProductCard.Title />
+          <ProductCard.Buttons />
         </ProductCard>
       </div>
     </div>
