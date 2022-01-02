@@ -25,8 +25,8 @@ export default function Shopping() {
   const [shoppingCart, setShoppingCart] = useState<{
     [key: string]: ShoppingItem;
   }>({
-    "1": { ...product1, quantity: 10 },
-    "2": { ...product2, quantity: 4 },
+    // "1": { ...product1, quantity: 0 },
+    // "2": { ...product2, quantity: 0 },
   });
 
   const onEditItem = (info: onChangeArgs) => {
@@ -70,15 +70,17 @@ export default function Shopping() {
       </div>
 
       <div className="shopping-cart">
-        <ProductCard
-          product={product1}
-          className="shopping-card-current"
-          // onChange={() => onEditItem()}
-        >
-          <ProductCard.Image />
-          <ProductCard.Title />
-          <ProductCard.Buttons />
-        </ProductCard>
+        {Object.keys(shoppingCart).map((idItem) => (
+          <ProductCard
+            key={`shoppingCartItem-${idItem}`}
+            product={shoppingCart[idItem]}
+            className="shopping-card-current"
+          >
+            <ProductCard.Image />
+            <ProductCard.Title />
+            <ProductCard.Buttons />
+          </ProductCard>
+        ))}
       </div>
 
       <div>{JSON.stringify(shoppingCart, null, 5)}</div>
