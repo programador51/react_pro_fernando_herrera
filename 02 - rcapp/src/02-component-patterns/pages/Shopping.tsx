@@ -75,6 +75,7 @@ export default function Shopping() {
             key={`shoppingCartItem-${idItem}`}
             product={shoppingCart[idItem]}
             className="shopping-card-current"
+            value={shoppingCart[idItem].quantity}
           >
             <ProductCard.Image />
             <ProductCard.Title />

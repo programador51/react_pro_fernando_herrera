@@ -3,6 +3,10 @@ export interface Props {
     className?: string;
     children?: ReactElement | ReactElement[];
     onChange?: (args: onChangeArgs) => void;
+    /**
+     * Initial value for the counter button
+     */
+    value?: number;
 }
 
 export interface Product {

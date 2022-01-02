@@ -1,16 +1,25 @@
 import { onChangeArgs, Product } from "02-component-patterns/interfaces/products.interfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface useProductArgs {
     product: Product,
-    onChange?: (args: onChangeArgs) => void
+    onChange?: (args: onChangeArgs) => void;
+    /**
+     * Initial value for the counter
+     */
+    value?: number;
 }
 
 export default function useProduct({
     product,
-    onChange
+    onChange,
+    value = 0
 }: useProductArgs) {
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(value);
+
+    useEffect(() => {
+        setCounter(value);
+    }, [value]);
 
     const increase = () => {
 

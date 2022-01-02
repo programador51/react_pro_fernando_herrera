@@ -17,10 +17,12 @@ export function ProductCard({
   children,
   className = "",
   onChange = () => {},
+  value = 0,
 }: Props) {
   const { counter, decrease, increase } = useProduct({
     onChange,
     product,
+    value,
   });
 
   return (
