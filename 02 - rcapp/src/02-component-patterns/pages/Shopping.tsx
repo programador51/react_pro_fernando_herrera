@@ -29,8 +29,24 @@ export default function Shopping() {
     "2": { ...product2, quantity: 4 },
   });
 
-  const onEditItem = (info: onChangeArgs) =>
-    console.log(info.product, info.quantity);
+  const onEditItem = (info: onChangeArgs) => {
+    if (info.quantity <= 0) {
+      const unreferencedCopy = JSON.parse(JSON.stringify(shoppingCart));
+
+      delete unreferencedCopy[info.product.id];
+
+      setShoppingCart(unreferencedCopy);
+      return;
+    }
+
+    setShoppingCart((oldItem) => ({
+      ...oldItem,
+      [info.product.id]: {
+        ...info.product,
+        quantity: info.quantity,
+      },
+    }));
+  };
 
   return (
     <div>
@@ -64,6 +80,8 @@ export default function Shopping() {
           <ProductCard.Buttons />
         </ProductCard>
       </div>
+
+      <div>{JSON.stringify(shoppingCart, null, 5)}</div>
     </div>
   );
 }
