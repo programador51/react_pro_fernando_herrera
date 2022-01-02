@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ProductButtons,
-  ProductCard,
-  ProductImage,
-  ProductTitle,
-} from "02-component-patterns/pages/ProductCard";
-// import styles from "02-component-patterns/styles/styles.module.css";
+import { ProductCard } from "02-component-patterns/pages/ProductCard";
 
 const product = {
   id: "1",
@@ -27,7 +21,7 @@ export default function Shopping() {
         }}
       >
         <ProductCard product={product}>
-          <ProductCard.Image img={product.img} />
+          <ProductCard.Image imageProp={product.img} />
           <ProductCard.Title />
           <ProductCard.Buttons />
         </ProductCard>
