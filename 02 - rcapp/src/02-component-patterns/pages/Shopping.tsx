@@ -26,7 +26,7 @@ export default function Shopping() {
       >
         <ProductCard product={product}>
           <ProductCard.Image imageProp={product.img} />
-          <ProductCard.Title />
+          <ProductCard.Title className="bg-dark" />
           <ProductCard.Buttons />
         </ProductCard>
 
@@ -35,7 +35,13 @@ export default function Shopping() {
             className="custom-image"
             imageProp="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FWxfmULzzKoU%2Fmaxresdefault.jpg&f=1&nofb=1"
           />
-          <ProductTitle title="Vacations" className="text-white" />
+          <ProductTitle
+            title="Vacations"
+            className="text-white"
+            style={{
+              color: "red",
+            }}
+          />
           <ProductButtons />
         </ProductCard>
       </div>
