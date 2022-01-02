@@ -30,6 +30,8 @@ export default function Shopping() {
   });
 
   const onEditItem = (info: onChangeArgs) => {
+    console.log(info.quantity);
+
     if (info.quantity <= 0) {
       const unreferencedCopy = JSON.parse(JSON.stringify(shoppingCart));
 
@@ -82,7 +84,7 @@ export default function Shopping() {
             key={`shoppingCartItem-${idItem}`}
             product={shoppingCart[idItem]}
             className="shopping-card-current"
-            onChange={onEditItem}
+            // onChange={onEditItem}
             value={shoppingCart[idItem].quantity}
           >
             <ProductCard.Image />

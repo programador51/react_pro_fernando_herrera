@@ -1,5 +1,5 @@
 import { onChangeArgs, Product } from "02-component-patterns/interfaces/products.interfaces";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface useProductArgs {
     product: Product,
@@ -17,6 +17,8 @@ export default function useProduct({
 }: useProductArgs) {
     const [counter, setCounter] = useState(value);
 
+    const isControlled = useRef(!!onChange);
+
     useEffect(() => {
         setCounter(value);
     }, [value]);
@@ -24,6 +26,13 @@ export default function useProduct({
     const increase = () => {
 
         const newCounter = counter + 1;
+
+        if (isControlled.current) {
+            return onChange!({
+                quantity: newCounter,
+                product
+            })
+        }
 
         setCounter(newCounter);
 
@@ -33,7 +42,16 @@ export default function useProduct({
         });
     }
     const decrease = () => {
+
         const newCounter = counter - 1 <= 0 ? 0 : counter - 1;
+
+        if (isControlled.current) {
+            return onChange!({
+                quantity: newCounter,
+                product
+            })
+        }
+
         setCounter(newCounter);
         onChange && onChange({
             quantity: newCounter,
