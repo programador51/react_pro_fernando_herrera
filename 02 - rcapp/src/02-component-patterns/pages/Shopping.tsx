@@ -6,6 +6,7 @@ import {
   ShoppingItem,
 } from "02-component-patterns/interfaces/products.interfaces";
 import "../styles/custom-styles.css";
+import useShoppingCart from "02-component-patterns/hooks/useShoppingCart";
 
 const product1 = {
   id: "1",
@@ -22,33 +23,34 @@ const product2 = {
 const products: Product[] = [product1, product2];
 
 export default function Shopping() {
-  const [shoppingCart, setShoppingCart] = useState<{
-    [key: string]: ShoppingItem;
-  }>({
-    // "1": { ...product1, quantity: 0 },
-    // "2": { ...product2, quantity: 0 },
-  });
+  const { onEditItem, shoppingCart } = useShoppingCart();
+  // const [shoppingCart, setShoppingCart] = useState<{
+  //   [key: string]: ShoppingItem;
+  // }>({
+  //   // "1": { ...product1, quantity: 0 },
+  //   // "2": { ...product2, quantity: 0 },
+  // });
 
-  const onEditItem = (info: onChangeArgs) => {
-    console.log(info.quantity);
+  // const onEditItem = (info: onChangeArgs) => {
+  //   console.log(info.quantity);
 
-    if (info.quantity <= 0) {
-      const unreferencedCopy = JSON.parse(JSON.stringify(shoppingCart));
+  //   if (info.quantity <= 0) {
+  //     const unreferencedCopy = JSON.parse(JSON.stringify(shoppingCart));
 
-      delete unreferencedCopy[info.product.id];
+  //     delete unreferencedCopy[info.product.id];
 
-      setShoppingCart(unreferencedCopy);
-      return;
-    }
+  //     setShoppingCart(unreferencedCopy);
+  //     return;
+  //   }
 
-    setShoppingCart((oldItem) => ({
-      ...oldItem,
-      [info.product.id]: {
-        ...info.product,
-        quantity: info.quantity,
-      },
-    }));
-  };
+  //   setShoppingCart((oldItem) => ({
+  //     ...oldItem,
+  //     [info.product.id]: {
+  //       ...info.product,
+  //       quantity: info.quantity,
+  //     },
+  //   }));
+  // };
 
   return (
     <div>
@@ -84,7 +86,7 @@ export default function Shopping() {
             key={`shoppingCartItem-${idItem}`}
             product={shoppingCart[idItem]}
             className="shopping-card-current"
-            // onChange={onEditItem}
+            onChange={onEditItem}
             value={shoppingCart[idItem].quantity}
           >
             <ProductCard.Image />
