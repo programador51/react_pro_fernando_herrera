@@ -28,6 +28,8 @@ export default function Shopping() {
     "2": { ...product2, quantity: 4 },
   });
 
+  const onEditItem = () => console.log("hi");
+
   return (
     <div>
       <h1>Shopping page </h1>
@@ -41,7 +43,11 @@ export default function Shopping() {
         }}
       >
         {products.map((product: Product) => (
-          <ProductCard key={product.id} product={product}>
+          <ProductCard
+            key={product.id}
+            product={product}
+            onChange={() => onEditItem()}
+          >
             <ProductCard.Image />
             <ProductCard.Title />
             <ProductCard.Buttons />
@@ -50,7 +56,11 @@ export default function Shopping() {
       </div>
 
       <div className="shopping-cart">
-        <ProductCard product={product1} className="shopping-card-current">
+        <ProductCard
+          product={product1}
+          className="shopping-card-current"
+          onChange={() => onEditItem()}
+        >
           <ProductCard.Image />
           <ProductCard.Title />
           <ProductCard.Buttons />

@@ -2,6 +2,7 @@ export interface Props {
     product: Product;
     className?: string;
     children?: ReactElement | ReactElement[];
+    onChange?: () => void;
 }
 
 export interface Product {

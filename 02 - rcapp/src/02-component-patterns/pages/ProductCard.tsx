@@ -12,8 +12,13 @@ import { ProductButtons } from "02-component-patterns/components/ProductButtons"
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-export function ProductCard({ product, children, className = "" }: Props) {
-  const { counter, decrease, increase } = useProduct();
+export function ProductCard({
+  product,
+  children,
+  className = "",
+  onChange = () => {},
+}: Props) {
+  const { counter, decrease, increase } = useProduct(onChange);
 
   return (
     <Provider
