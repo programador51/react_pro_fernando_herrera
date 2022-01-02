@@ -61,7 +61,14 @@ export default function Shopping() {
         }}
       >
         {products.map((product: Product) => (
-          <ProductCard key={product.id} product={product} onChange={onEditItem}>
+          <ProductCard
+            key={product.id}
+            product={product}
+            onChange={onEditItem}
+            value={
+              shoppingCart[product.id] ? shoppingCart[product.id].quantity : 0
+            }
+          >
             <ProductCard.Image />
             <ProductCard.Title />
             <ProductCard.Buttons />
@@ -75,6 +82,7 @@ export default function Shopping() {
             key={`shoppingCartItem-${idItem}`}
             product={shoppingCart[idItem]}
             className="shopping-card-current"
+            onChange={onEditItem}
             value={shoppingCart[idItem].quantity}
           >
             <ProductCard.Image />
