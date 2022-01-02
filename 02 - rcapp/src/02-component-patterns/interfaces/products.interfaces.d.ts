@@ -16,3 +16,7 @@ export interface ProductContextProps {
     increase: () => void;
     product: Product;
 }
+
+export interface ShoppingItem extends Product {
+    quantity: number
+}
