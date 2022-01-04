@@ -21,10 +21,21 @@ export default function useProduct({
 
     const isControlled = useRef(!!onChange);
 
+    const isMounted = useRef(false);
+
+
     useEffect(() => {
+
+        if (!isMounted.current) return;
+
         setCounter(value);
 
     }, [value]);
+
+    // Order of use effects matters ??
+    useEffect(() => {
+        isMounted.current = true;
+    }, []);
 
     const increase = () => {
 
