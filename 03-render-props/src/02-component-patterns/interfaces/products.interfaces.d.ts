@@ -13,7 +13,8 @@ export interface InitialValues {
 export interface Props {
     product: Product;
     className?: string;
-    children?: ReactElement | ReactElement[];
+    // children?: ReactElement | ReactElement[];
+    children: (message?: string) => JSX.Element
     onChange?: (args: onChangeArgs) => void;
     /**
      * Initial value for the counter button

@@ -25,9 +25,14 @@ export default function Shopping() {
         product={product1}
         initialValues={{ quantity: 4, maxQuantity: 10 }}
       >
-        <ProductCard.Image />
-        <ProductCard.Title />
-        <ProductCard.Buttons />
+        {(message) => (
+          <>
+            <ProductCard.Image />
+            <ProductCard.Title />
+            <ProductCard.Buttons />
+            {message}
+          </>
+        )}
       </ProductCard>
     </div>
   );

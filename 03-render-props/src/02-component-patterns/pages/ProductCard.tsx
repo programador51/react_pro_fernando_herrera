@@ -36,7 +36,9 @@ export function ProductCard({
         product,
       }}
     >
-      <div className={`${styles.productCard} ${className}`}>{children}</div>
+      <div className={`${styles.productCard} ${className}`}>
+        {children("hi")}
+      </div>
     </Provider>
   );
 }
