@@ -6,3 +6,4 @@ export const buttonMinus: string;
 export const buttonMinus: string;
 export const countLabel: string;
 export const buttonAdd: string;
+export const disabled: string;

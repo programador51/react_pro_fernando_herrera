@@ -76,6 +76,6 @@ export default function useProduct({
     };
 
     return {
-        counter, increase, decrease
+        counter, increase, decrease, maxCount: initialValues?.maxQuantity
     }
 }

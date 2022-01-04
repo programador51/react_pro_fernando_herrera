@@ -35,6 +35,7 @@ export interface ProductContextProps {
     decrease: () => void;
     increase: () => void;
     product: Product;
+    maxCount: number | null | undefined
 }
 
 export interface ShoppingItem extends Product {
