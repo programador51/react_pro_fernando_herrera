@@ -1,0 +1,23 @@
+.bg-dark{
+    background-color: hsl(0, 0%, 29%);
+}
+
+.text-white{
+    color:hsl(30, 100%, 99%);
+}
+
+.custom-image{
+    padding:10px;
+    border-radius:20px;
+    box-sizing: border-box;
+}
+
+.shopping-cart{
+    position: fixed;
+    top:0;
+    right: 10px;
+}
+
+.shopping-card-current{
+    width: 100px;
+}
