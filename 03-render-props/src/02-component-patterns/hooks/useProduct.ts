@@ -41,6 +41,8 @@ export default function useProduct({
 
         const newCounter = counter + 1;
 
+        if (newCounter > 10) return;
+
         setCounter(newCounter);
 
         if (isControlled.current) {
