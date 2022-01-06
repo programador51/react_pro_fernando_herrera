@@ -14,7 +14,7 @@ export interface Props {
     product: Product;
     className?: string;
     // children?: ReactElement | ReactElement[];
-    children: (message?: string) => JSX.Element
+    children: (object: ProductCardHandlers) => JSX.Element
     onChange?: (args: onChangeArgs) => void;
     /**
      * Initial value for the counter button
@@ -45,4 +45,14 @@ export interface ShoppingItem extends Product {
 export interface onChangeArgs {
     product: Product;
     quantity: number;
+}
+
+export interface ProductCardHandlers {
+    quantity: number;
+    isMaxQuantityReached: boolean;
+    maxQuantity?: number;
+    product: Product;
+    increase: () => void;
+    decrease: () => void;
+    reset: () => void;
 }

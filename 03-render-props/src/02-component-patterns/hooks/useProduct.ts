@@ -23,7 +23,6 @@ export default function useProduct({
 
     const isMounted = useRef(false);
 
-
     useEffect(() => {
 
         if (!isMounted.current) return;
@@ -75,7 +74,13 @@ export default function useProduct({
         });
     };
 
+    const reset = () => {
+        setCounter(initialValues?.quantity || value);
+    }
+
     return {
-        counter, increase, decrease, maxCount: initialValues?.maxQuantity
+        counter, increase, decrease, maxCount: initialValues?.maxQuantity,
+        isMaxQuantityReached: !!initialValues?.quantity && initialValues.maxQuantity === counter,
+        reset
     }
 }
