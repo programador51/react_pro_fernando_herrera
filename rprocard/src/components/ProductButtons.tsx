@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductContext } from 'pages/ProductCard';
+import { ProductContext } from '../pages/ProductCard';
 import { useCallback, useContext } from 'react';
 import styles from '../styles/styles.module.css';
 

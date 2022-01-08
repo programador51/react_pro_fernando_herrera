@@ -5,5 +5,6 @@ describe('it', () => {
     const div = document.createElement('div');
     // ReactDOM.render(<></>, div);
     ReactDOM.unmountComponentAtNode(div);
+    console.log('Hi');
   });
 });

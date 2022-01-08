@@ -1,10 +1,10 @@
 import React, { createContext } from 'react';
 import styles from '../styles/styles.module.css';
-import useProduct from 'hooks/useProduct';
-import { ProductContextProps, Props } from 'interfaces/products.interfaces';
-import { ProductImage } from 'components/ProductImage';
-import { ProductTitle } from 'components/ProductTitle';
-import { ProductButtons } from 'components/ProductButtons';
+import useProduct from '../hooks/useProduct';
+import { ProductContextProps, Props } from '../interfaces/products.interfaces';
+import { ProductImage } from '../components/ProductImage';
+import { ProductTitle } from '../components/ProductTitle';
+import { ProductButtons } from '../components/ProductButtons';
 
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
