@@ -34,17 +34,18 @@ export default function FormikBasic() {
     return errors;
   };
 
-  const { handleChange, values, handleSubmit } = useFormik({
-    initialValues: {
-      name: "Test",
-      lastname: "",
-      email: "",
-    },
-    onSubmit: (data: RegisterI) => {
-      console.log(data);
-    },
-    validate,
-  });
+  const { handleChange, values, handleSubmit, errors, touched, handleBlur } =
+    useFormik({
+      initialValues: {
+        name: "Test",
+        lastname: "",
+        email: "",
+      },
+      onSubmit: (data: RegisterI) => {
+        console.log(data);
+      },
+      validate,
+    });
 
   return (
     <div>
@@ -54,32 +55,34 @@ export default function FormikBasic() {
         <input
           onChange={handleChange}
           type="text"
+          onBlur={handleBlur}
           name="name"
           id="name"
           value={values.name}
         />
-        <span>Required</span>
+        {touched.name && errors.name && <span>{errors.name}</span>}
 
         <label htmlFor="lastname">Lastname</label>
         <input
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.lastname}
           type="text"
           name="lastname"
           id="lastname"
         />
-        <span>Required</span>
+        {touched.lastname && errors.lastname && <span>{errors.lastname}</span>}
 
         <label htmlFor="email">Email</label>
         <input
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.email}
           type="text"
           name="email"
           id="email"
         />
-        <span>Required</span>
-        <span>Invalid email</span>
+        {touched.email && errors.email && <span>{errors.email}</span>}
 
         <input type="submit" value="Save" />
       </form>
