@@ -1,4 +1,4 @@
-import Shopping from '02-component-patterns/pages/Shopping';
+import RegisterPage from 'pages/RegisterPage';
 import { LazyExoticComponent } from 'react';
 
 type JSXComponent = () => JSX.Element;
@@ -29,15 +29,9 @@ export const routes: routeNav[] = [
      * Al that cross the path lazy will be pass first by Lazy1
      */
     {
-        to: '/shopping/',
-        path: '/shopping/*',
-        Component: Shopping,
-        name: 'Shopping'
-    },
-    // {
-    //     to: '/nolazy',
-    //     path: 'nolazy',
-    //     Component: Lazy2,
-    //     name: 'No lazy'
-    // }
+        to: '/register',
+        path: '/register',
+        Component: RegisterPage,
+        name: 'Register'
+    }
 ]
