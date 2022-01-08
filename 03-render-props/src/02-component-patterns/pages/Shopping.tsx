@@ -25,14 +25,19 @@ export default function Shopping() {
         product={product1}
         initialValues={{ quantity: 4, maxQuantity: 10 }}
       >
-        {({ reset }) => (
+        {({
+          reset,
+          decrease,
+          increase,
+          product,
+          isMaxQuantityReached,
+          quantity,
+          maxQuantity,
+        }) => (
           <>
             <ProductCard.Image />
             <ProductCard.Title />
             <ProductCard.Buttons />
-
-            <button onClick={reset}>reset</button>
-            {/* {message} */}
           </>
         )}
       </ProductCard>
