@@ -1,4 +1,5 @@
 import FormikBasic from 'pages/FormikBasic';
+import FormikBasicYup from 'pages/FormikBasicYup';
 import RegisterPage from 'pages/RegisterPage';
 import { LazyExoticComponent } from 'react';
 
@@ -40,5 +41,11 @@ export const routes: routeNav[] = [
         path: '/basic-formik',
         Component: FormikBasic,
         name: 'Basic formik'
+    },
+    {
+        to: '/formik-yup',
+        path: '/formik-yup',
+        Component: FormikBasicYup,
+        name: 'Basic formik yup'
     }
 ]
