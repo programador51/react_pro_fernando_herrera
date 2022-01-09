@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "styles/styles.css";
 import * as yup from "yup";
+import TextInput from "components/TextInput";
 
 export interface RegisterI {
   name: string;
@@ -9,10 +10,10 @@ export interface RegisterI {
   email: string;
 }
 
-export default function FormikComponents() {
+export default function FormikAbstract() {
   return (
     <div>
-      <h1>Formik components</h1>
+      <h1>FormikAbstract</h1>
 
       <Formik
         initialValues={{
@@ -38,17 +39,24 @@ export default function FormikComponents() {
       >
         {(formik) => (
           <Form noValidate>
-            <label htmlFor="name">Name</label>
-            <Field name="name" type="text" placeholder="Name" />
-            <ErrorMessage name="name" component="span" />
+            <TextInput
+              label="Name"
+              name="name"
+              placeholder="Type your first name"
+            />
 
-            <label htmlFor="lastname">Lastname</label>
-            <Field name="lastname" type="text" />
-            <ErrorMessage name="lastname" component="span" />
+            <TextInput
+              label="Last name"
+              name="lastname"
+              placeholder="Type your last name"
+            />
 
-            <label htmlFor="email">Email</label>
-            <Field name="email" type="text" />
-            <ErrorMessage name="email" component="span" />
+            <TextInput
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Type your email"
+            />
 
             <label>
               <Field name="terms" type="checkbox" /> Terms and conditions

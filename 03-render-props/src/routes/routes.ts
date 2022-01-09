@@ -1,3 +1,4 @@
+import FormikAbstract from 'pages/FormikAbstract';
 import FormikBasic from 'pages/FormikBasic';
 import FormikBasicYup from 'pages/FormikBasicYup';
 import FormikComponents from 'pages/FormikComponents';
@@ -54,5 +55,11 @@ export const routes: routeNav[] = [
         path: '/formik-comps',
         Component: FormikComponents,
         name: 'Formik components'
+    },
+    {
+        to: '/formik-abstract',
+        path: '/formik-abstract',
+        Component: FormikAbstract,
+        name: 'Formik asbstract'
     }
 ]
