@@ -4,6 +4,7 @@ import "styles/styles.css";
 import * as yup from "yup";
 import TextInput from "components/TextInput";
 import SelectInput from "components/SelectInput";
+import CheckboxInput from "components/CheckboxInputs";
 
 export interface RegisterI {
   name: string;
@@ -59,10 +60,7 @@ export default function FormikAbstract() {
               placeholder="Type your email"
             />
 
-            <label>
-              <Field name="terms" type="checkbox" /> Terms and conditions
-            </label>
-            <ErrorMessage name="terms" component="span" />
+            <CheckboxInput label="Terms and conditions" name="terms" />
 
             <SelectInput
               label="Job Type"
