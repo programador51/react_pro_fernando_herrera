@@ -1,5 +1,5 @@
 import React from "react";
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 
 interface PropsSelectInput {
   label: string;
@@ -13,9 +13,10 @@ export default function SelectInput({ label, ...props }: PropsSelectInput) {
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
       <select {...field} {...props} />
-      {meta.touched && meta.error && (
+      <ErrorMessage name={props.name} component="span" />
+      {/* {meta.touched && meta.error && (
         <span className="error">{meta.error}</span>
-      )}
+      )} */}
     </>
   );
 }

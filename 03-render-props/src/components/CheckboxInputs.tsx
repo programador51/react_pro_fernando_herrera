@@ -1,5 +1,5 @@
 import React from "react";
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 
 interface PropsCheckboxInput {
   label: string;
@@ -15,9 +15,10 @@ export default function CheckboxInput({ label, ...props }: PropsCheckboxInput) {
         <input type="checkbox" {...field} {...props} />
         {label}
       </label>
-      {meta.touched && meta.error && (
+      <ErrorMessage name={props.name} component="span" />
+      {/* {meta.touched && meta.error && (
         <span className="error">{meta.error}</span>
-      )}
+      )} */}
     </>
   );
 }

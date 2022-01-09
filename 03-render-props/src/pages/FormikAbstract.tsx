@@ -1,10 +1,9 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import "styles/styles.css";
 import * as yup from "yup";
-import TextInput from "components/TextInput";
-import SelectInput from "components/SelectInput";
-import CheckboxInput from "components/CheckboxInputs";
+
+import { TextInput, SelectInput, CheckboxInput } from "components";
 
 export interface RegisterI {
   name: string;
