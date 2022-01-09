@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import "styles/styles.css";
 import * as yup from "yup";
 import TextInput from "components/TextInput";
+import SelectInput from "components/SelectInput";
 
 export interface RegisterI {
   name: string;
@@ -63,13 +64,16 @@ export default function FormikAbstract() {
             </label>
             <ErrorMessage name="terms" component="span" />
 
-            <label>Job type</label>
-            <Field name="jobType" type="number" as="select">
+            <SelectInput
+              label="Job Type"
+              name="jobType"
+              type="number"
+              as="select"
+            >
               <option value={0}>Pick something</option>
               <option value={1}>Dev Ops</option>
               <option value={2}>Backend</option>
-            </Field>
-            <ErrorMessage name="jobType" component="span" />
+            </SelectInput>
 
             <input type="submit" value="Save" />
           </Form>
