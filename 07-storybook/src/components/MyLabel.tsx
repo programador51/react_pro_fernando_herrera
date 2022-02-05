@@ -21,6 +21,8 @@ export interface MyLabelProps {
    * Set the font color
    */
   color?: "primary" | "secondary" | "tertiary";
+
+  fontColor?: string;
 }
 
 function MyLabel({
@@ -28,9 +30,15 @@ function MyLabel({
   size = "normal",
   allCaps = false,
   color = "primary",
+  fontColor,
 }: MyLabelProps) {
   return (
-    <span className={`${size} text-${color}`}>
+    <span
+      className={`${size} text-${color}`}
+      style={{
+        color: fontColor,
+      }}
+    >
       {allCaps ? label.toUpperCase() : label}
     </span>
   );
